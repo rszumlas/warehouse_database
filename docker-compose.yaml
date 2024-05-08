@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: warehouse
+      POSTGRES_USER: rszumlas
+      POSTGRES_PASSWORD: rszumlas
+    volumes:
+      - ./init-scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    ports:
+      - "5432:5432"
